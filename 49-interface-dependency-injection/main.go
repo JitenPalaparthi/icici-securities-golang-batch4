@@ -26,3 +26,6 @@ func main() {
 	fmt.Println("Area of r1:", a1, "\nPerimeter of r1:", p1)
 
 }
+
+// itable --> interface definition table
+//
