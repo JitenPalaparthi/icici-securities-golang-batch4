@@ -47,14 +47,14 @@ go mod vendor
 go get github.com/jitenpalaparthi/somerepo
 ```
 
-### Keywords(22 of 25)
-
+### Keywords(25 of 25)
 ```
-break        default      func         interface    
-case         defer                     map          struct
-             else         goto         package      switch
+break        default      func         interface    select
+case         defer        go           map          struct
+chan         else         goto         package      switch
 const        fallthrough  if           range        type
 continue     for          import       return       var
 ```
 
-### Builtin (18)
+### Builtin (18 of 18)
+- append, close, clear, copy, print,println, cap,len, complex, real, imag, max,min, panic, recover, new, make, delete
