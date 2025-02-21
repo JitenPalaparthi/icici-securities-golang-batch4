@@ -14,7 +14,7 @@ typedef struct {
 void movePoint(Point* p, int dx, int dy);
 void printArray(int* arr, int length);
 */
-import "C"
+import "C" // psudo package
 import (
 	"fmt"
 	"unsafe"

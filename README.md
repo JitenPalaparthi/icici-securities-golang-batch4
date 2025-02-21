@@ -58,3 +58,36 @@ continue     for          import       return       var
 
 ### Builtin (18 of 18)
 - append, close, clear, copy, print,println, cap,len, complex, real, imag, max,min, panic, recover, new, make, delete
+
+### To run test
+
+```
+go test ./...
+```
+```
+go test -timeout 30s -run ^TestStringReverse$ demo/models
+```
+
+```
+go test -timeout 30s -run ^TestValidateContact$ demo/models
+go test -timeout 30s -run ^(TestValidateContact|TestStringReverse1)$ demo/models
+```
+
+- Package level test
+```
+go test demo/models
+```
+
+- cover profile
+
+```
+go test --coverprofile=cover.out demo/models
+```
+
+- benchmark
+
+```
+go test -benchmem -run=^$ -coverprofile=bench.out -bench . demo/models
+```
+
+go test -benchmem -run=^$ -coverprofile=/var/folders/rs/kkl0cpr51t574sdxt7hc7fth0000gn/T/vscode-goMAgt1D/go-code-cover -bench . demo/models

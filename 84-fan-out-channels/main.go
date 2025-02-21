@@ -10,7 +10,7 @@ func main() {
 
 	ch1, _ := Generator(2, 10, "gen-1", time.Millisecond*10)
 
-	workers := uint8(10)
+	workers := uint8(20)
 	wg := new(sync.WaitGroup)
 	wg.Add(int(workers))
 	go func() {

@@ -3,7 +3,7 @@
 ### MacOS
 
 ```
-clang -dynamiclib -o libmylib.dylib mylib.c
+clang -dynamiclib -o build/libmylib.dylib csrc/mylib.c
 export DYLD_LIBRARY_PATH=.
 go run main.go
 ```
@@ -11,7 +11,7 @@ go run main.go
 ### Linux
 
 ```
-clang -shared -o libmylib.so mylib.c
+clang -shared -o build/libmylib.so csrc/mylib.c
 export LD_LIBRARY_PATH=.
 go run main.go
 ```
@@ -19,7 +19,7 @@ go run main.go
 ### Windows
 
 ```
-clang -shared -o mylib.dll mylib.c
+clang -shared -o build/mylib.dll csrc/mylib.c
 set PATH=%PATH%;.
 go run main.go
 ```
@@ -31,20 +31,20 @@ go run main.go
 
 ```
 # Compile the C code into an object file
-clang -c mylib.c -o mylib.o
+clang -c csrc/mylib.c -o build/mylib.o
 
 # Create a static library from the object file
-ar rcs libmylib.a mylib.o
+ar rcs build/libmylib.a build/mylib.o
 ```
 
 ### Windows
 
 ```
 # Compile the C code into an object file
-clang -c mylib.c -o mylib.o
+clang -c csrc/mylib.c -o build/mylib.o
 
 # Create a static library from the object file
-ar rcs libmylib.lib mylib.o
+ar rcs build/libmylib.lib build/mylib.o
 ```
 
 
