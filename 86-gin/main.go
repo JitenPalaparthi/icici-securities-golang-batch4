@@ -41,9 +41,14 @@ func main() {
 	PORT = os.Getenv("PORT")
 	if PORT == "" {
 		flag.StringVar(&PORT, "port", "8084", "--port=8085 | -port=8085 | --port 8085")
-		flag.Parse()
 	}
-	DB_CONN = `host=localhost user=admin password=admin123 dbname=contactsdb port=5432 sslmode=disable TimeZone=Asia/Shanghai`
+	DB_CONN = os.Getenv("DB_CONN")
+	if DB_CONN == "" {
+		flag.StringVar(&DB_CONN, "db", `host=localhost user=admin password=admin123 dbname=contactsdb port=5432 sslmode=disable TimeZone=Asia/Shanghai`, "--db=db connection string | -db=8085 | --db 8085")
+	}
+	flag.Parse()
+
+	//DB_CONN = `host=localhost user=admin password=admin123 dbname=contactsdb port=5432 sslmode=disable TimeZone=Asia/Shanghai`
 	db, err := database.GetConnection(DB_CONN)
 	if err != nil {
 		log.Fatalln(err.Error())
@@ -55,6 +60,9 @@ func main() {
 	e.GET("/ping", handlers.Ping)
 	e.GET("/health", handlers.Health)
 	e.POST("/contact", handlers.NewContacthandler(icontactdb).Create)
+	e.GET("/contact/all", handlers.NewContacthandler(icontactdb).GetAll)
+	e.DELETE("/contact/:id", handlers.NewContacthandler(icontactdb).DeleteByID)
+	e.GET("/contact/:id", handlers.NewContacthandler(icontactdb).GetByID)
 
 	if err := e.Run(":" + PORT); err != nil {
 		log.Fatal(err.Error())
